@@ -1,0 +1,161 @@
+<!DOCTYsspananE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #div_all {
+                position: relative;
+                top: 200px;
+                left: 700px;
+            }
+
+            #div_show {
+                border: 2px solid black;
+                width: 351px;
+                height: 90px;
+            }
+            #show_1 {
+                border: 2px solid black;
+                width: 351px;
+                height: 50%;
+                text-align: right;
+                font-size: 2rem;
+                padding:-20px;
+            }
+            #show_2 {
+                border: 2px solid black;
+                width: 351px;
+                height: 50%;
+                text-align: right;
+                font-size: 2rem;
+            }
+
+            #div_show>p {
+                width: 100%;
+                height: 50px;
+                font-size: 2rem;
+                text-align: right;
+                margin-left: -10px;
+            }
+
+            #div_button {
+                border: 3px solid black;
+                border-top: 5px solid black;
+                width: 350px;
+                height: 400px;
+            }
+
+            .number>span {
+                display: inline-block;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+                border: 2px solid white;
+                margin-top: 30px;
+                margin-left: 15px;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .number>span:hover {
+                border: 2px solid black;
+                cursor: pointer;
+            }
+
+            .number>span:active {
+                background-color: darkgray;
+                user-select: none;
+            }
+
+            .symbol>span {
+                display: inline-block;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+                border: 2px solid white;
+                position: relative;
+                bottom: 376px;
+                left: 250px;
+                text-align: center;
+                margin-top: 30px;
+                margin-left: 10px;
+                padding: 10px;
+            }
+
+            .symbol>span:hover {
+                background-color: brown;
+                cursor: pointer;
+            }
+
+            .symbol>span:active {
+                background-color: darkred;
+                user-select: none;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <div id="div_all">
+            <div id="div_show">
+                <div id = "show_1"></div>
+                <div id = "show_2"></div>
+            </div>
+            <div id="div_button">
+                <div class="number">
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                </div>
+                <div class="number">
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                </div>
+                <div class="number">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+                <div class="number">
+                    <span>0</span>
+                    <span>.</span>
+                    <span id = "result">=</span>
+                </div>
+                <div class="symbol">
+                    <span>/</span><br>
+                    <span>-</span><br>
+                    <span>*</span><br>
+                    <span>+</span><br>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var span_all = document.getElementsByTagName("span");
+            var show = document.getElementById("show_1");
+            var data = new Array();
+            for(let i=0;i<span_all.length;i++){
+                span_all[i].addEventListener("click",function(ev){
+                    var row = this.innerHTML;
+                    if(row !== "="){
+                       show.innerHTML += row;
+                        data.push(row); 
+                    }
+                    
+                })   
+            }
+            document.getElementById("result").addEventListener("click",function(){
+                var merge = data.join("");
+                document.getElementById("show_2").innerHTML = eval(merge);
+            })
+            
+        
+        </script>
+    </body>
+
+    </html>
